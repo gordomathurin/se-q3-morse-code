@@ -14,24 +14,29 @@ __author__ = 'Gordon Mathurin'
 from morse_dict import MORSE_2_ASCII
 
 
+#     H = . . . . = 1010101 = 11001100110011 =
+# 2x slower = 111000111000111000111 = 3x slower
+# first part is figuring the frequency and then strip to be fastest way
+# try to find a unique # to figure out frequency ---> Hint
 def decode_bits(bits):
     # your code here
     # maybe for loop to go thru morse dict and BITS to to compare vaule
     # associted with BITS and then
     # assign them to the new variable when == ????
-    vaule_match_holder = ""
 
-    for letter in bits:
-        pass
-        for vaule in MORSE_2_ASCII:
-            pass
-
-    return vaule_match_holder
+    return
 
 
 def decode_morse(morse):
     # your code here
-    return
+    MORSE_2_ASCII[""] = " "
+    vaule_match_holder = ""
+    morse_list = morse.split(" ")
+    print(morse_list)
+    for elements in morse_list:
+        vaule_match_holder += MORSE_2_ASCII[elements]
+    print(vaule_match_holder)
+    return vaule_match_holder
 
 
 if __name__ == '__main__':
