@@ -12,19 +12,26 @@ Pause between words – is 7 time units long.
 __author__ = 'Gordon Mathurin'
 
 from morse_dict import MORSE_2_ASCII
+import re
 
 
-#     H = . . . . = 1010101 = 11001100110011 =
-# 2x slower = 111000111000111000111 = 3x slower
-# first part is figuring the frequency and then strip to be fastest way
-# try to find a unique # to figure out frequency ---> Hint
 def decode_bits(bits):
-    # your code here
-    # maybe for loop to go thru morse dict and BITS to to compare vaule
-    # associted with BITS and then
-    # assign them to the new variable when == ????
-
-    return
+    bits = bits.strip("0")
+    result = ''
+    split_to_bits = re.split('(0+)', bits)
+    units = len(sorted(split_to_bits, key=len)[0])
+    for match in split_to_bits:
+        if "1" in match:
+            if len(match) // units == 1:
+                result += "."
+            else:
+                result += "-"
+        else:
+            if len(match) // units == 3:
+                result += " "
+            elif len(match) // units == 7:
+                result += "   "
+    return result
 
 
 def decode_morse(morse):
